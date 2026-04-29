@@ -149,24 +149,23 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--black);
       overflow: hidden;
     }
 
-    /* ambient glow left */
     .hero::before {
       content: '';
       position: absolute;
-      top: 20%; left: -10%;
+      top: 10%; left: -5%;
       width: 700px; height: 700px;
-      background: radial-gradient(ellipse, rgba(201,168,76,.06) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(201,168,76,.055) 0%, transparent 65%);
       pointer-events: none;
+      z-index: 1;
     }
-    /* grid lines */
     .hero::after {
       content: '';
       position: absolute; inset: 0;
@@ -175,26 +174,35 @@
         linear-gradient(90deg, rgba(201,168,76,.025) 1px, transparent 1px);
       background-size: 70px 70px;
       pointer-events: none;
+      z-index: 1;
     }
 
-    .hero-content {
+    /* Centred container with 2-col grid — mirrors the template */
+    .hero-inner {
       position: relative;
       z-index: 2;
-      padding: 10rem 3rem 6rem 3rem;
-      max-width: 620px;
-      margin-left: auto;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem clamp(1.5rem, 4vw, 3rem) 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
     }
 
+    .hero-content { max-width: 560px; }
+
     .hero-pretitle {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: .75rem;
       font-size: .64rem;
-      letter-spacing: .42em;
+      letter-spacing: .38em;
       color: var(--gold);
       text-transform: uppercase;
       font-weight: 400;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       opacity: 0;
       animation: fadeUp .8s var(--ease) .3s forwards;
     }
@@ -208,12 +216,12 @@
 
     .hero-name {
       font-family: var(--font-display);
-      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
       font-weight: 300;
-      line-height: .93;
-      letter-spacing: .01em;
+      line-height: 1.05;
+      letter-spacing: -.02em;
       color: var(--white);
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp .9s var(--ease) .5s forwards;
     }
@@ -221,32 +229,32 @@
 
     .hero-tagline {
       font-family: var(--font-display);
-      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-size: clamp(.95rem, 1.6vw, 1.2rem);
       font-weight: 400;
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--white-65);
-      margin-bottom: .6rem;
+      margin-bottom: .5rem;
       opacity: 0;
-      animation: fadeUp .8s var(--ease) .7s forwards;
+      animation: fadeUp .8s var(--ease) .65s forwards;
     }
 
     .hero-location {
-      font-size: .72rem;
+      font-size: .7rem;
       letter-spacing: .25em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp .8s var(--ease) .85s forwards;
+      animation: fadeUp .8s var(--ease) .8s forwards;
     }
 
     .hero-line {
       width: 52px; height: 1px;
       background: linear-gradient(90deg, var(--gold), transparent);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp .7s var(--ease) .95s forwards;
+      animation: fadeUp .7s var(--ease) .9s forwards;
     }
 
     .hero-actions {
@@ -255,77 +263,89 @@
       gap: 1.25rem;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeUp .8s var(--ease) 1.05s forwards;
+      animation: fadeUp .8s var(--ease) 1s forwards;
     }
 
-    /* Hero image panel */
-    .hero-visual {
+    /* ── Framed image (template pattern) ── */
+    .hero-image-wrapper {
       position: relative;
-      height: 100vh;
-      z-index: 1;
+      opacity: 0;
+      animation: fadeScale 1s var(--ease) .6s forwards;
+    }
+
+    /* Decorative gold border — offset from the image, z-index behind */
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      bottom: 12px;
+      left: 12px;
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: 4px;
       overflow: hidden;
+      aspect-ratio: 3/4;
+      max-height: 580px;
     }
-    .hero-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, var(--black) 0%, transparent 30%);
-      z-index: 2;
-    }
-    .hero-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, var(--black) 0%, transparent 15%, transparent 75%, var(--black) 100%);
-      z-index: 2;
-    }
-    .hero-visual img {
+
+    .hero-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      opacity: 0;
-      animation: fadeIn 1.2s var(--ease) .6s forwards;
     }
 
-    /* Floating badge */
-    .hero-badge {
+    .hero-image::after {
+      content: '';
       position: absolute;
-      bottom: 3rem;
-      left: 3rem;
-      z-index: 3;
-      background: rgba(8,12,16,.88);
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(8,12,16,.45) 100%);
+    }
+
+    /* Floating badge bottom-left of image */
+    .hero-stat {
+      position: absolute;
+      bottom: 2rem;
+      left: -2rem;
+      background: rgba(8,12,16,.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--gold-divider);
-      padding: 1.2rem 1.8rem;
-      opacity: 0;
-      animation: slideRight .9s var(--ease) 1.3s forwards;
+      padding: 1.2rem 1.6rem;
+      border-radius: 4px;
+      z-index: 3;
+      animation: floatCard 1s var(--ease) 1.2s both;
     }
-    .hero-badge-num {
+    .hero-stat-num {
       font-family: var(--font-display);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 300;
       color: var(--gold);
       line-height: 1;
     }
-    .hero-badge-lbl {
-      font-size: .68rem;
-      letter-spacing: .15em;
+    .hero-stat-lbl {
+      font-size: .7rem;
+      letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--white-40);
-      margin-top: .3rem;
+      margin-top: .25rem;
     }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    @keyframes fadeScale {
+      from { opacity: 0; transform: scale(.95); }
+      to   { opacity: 1; transform: scale(1); }
     }
-    @keyframes slideRight {
+    @keyframes floatCard {
       from { opacity: 0; transform: translateX(-20px); }
       to   { opacity: 1; transform: translateX(0); }
     }
@@ -842,12 +862,24 @@
       }
       .nav-links.open a { font-size: 1.1rem; }
 
-      .hero { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .hero-content {
-        padding: 9rem 2rem 6rem;
+      /* Hero mobile: single column, image on top */
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+        gap: 2rem;
+      }
+      .hero-image-wrapper {
+        order: -1;
+        max-width: 300px;
         margin: 0 auto;
       }
+      .hero-image-wrapper::before { display: none; }
+      .hero-stat { left: auto; right: -.5rem; bottom: 1rem; }
+      .hero-content { max-width: 100%; }
+      .hero-pretitle { justify-content: center; }
+      .hero-actions { justify-content: center; }
 
       .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
@@ -865,6 +897,11 @@
       .cred-items { gap: 1.2rem; }
       .cred-divider { display: none; }
       .hero-name { font-size: clamp(2.8rem, 11vw, 4rem); }
+      /* Circular crop on very small screens to save vertical space */
+      .hero-image { aspect-ratio: 1/1; border-radius: 50%; max-height: none; }
+      .hero-image::after { background: none; }
+      .hero-image-wrapper { max-width: 180px; }
+      .hero-stat { display: none; }
     }
   </style>
 </head>
@@ -892,30 +929,36 @@
   </nav>
 
   <!-- ─── HERO ─── -->
-  <div class="hero" id="inicio">
-    <div class="hero-content">
-      <p class="hero-pretitle">Perita Judicial &nbsp;·&nbsp; Assistente Técnica</p>
-      <h1 class="hero-name">Camila<br><em>Alkmim</em></h1>
-      <p class="hero-tagline">Especialista em Cálculos Trabalhistas</p>
-      <p class="hero-location">Atendimento em todo o Território Nacional</p>
-      <div class="hero-line"></div>
-      <div class="hero-actions">
-        <a href="https://api.whatsapp.com/send/?phone=5577999974422&text=Olá%20Camila!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20perícia%20trabalhista." class="btn btn-gold" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Solicitar Cálculo
-        </a>
-        <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
-      </div>
-    </div>
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
 
-    <div class="hero-visual">
-      <img src="foto-camila.jpg" alt="Camila Alkmim — Perita Judicial Trabalhista" loading="eager">
-      <div class="hero-badge">
-        <div class="hero-badge-num">PJeCalc</div>
-        <div class="hero-badge-lbl">Domínio da Plataforma</div>
+      <div class="hero-content">
+        <p class="hero-pretitle">Perita Judicial &nbsp;·&nbsp; Assistente Técnica</p>
+        <h1 class="hero-name">Camila<br><em>Alkmim</em></h1>
+        <p class="hero-tagline">Especialista em Cálculos Trabalhistas</p>
+        <p class="hero-location">Atendimento em todo o Território Nacional</p>
+        <div class="hero-line"></div>
+        <div class="hero-actions">
+          <a href="https://api.whatsapp.com/send/?phone=5577999974422&text=Olá%20Camila!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20perícia%20trabalhista." class="btn btn-gold" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Solicitar Cálculo
+          </a>
+          <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+        </div>
       </div>
+
+      <div class="hero-image-wrapper">
+        <div class="hero-image">
+          <img src="foto-camila.jpg" alt="Camila Alkmim — Perita Judicial Trabalhista" loading="eager">
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">PJeCalc</div>
+          <div class="hero-stat-lbl">Domínio da Plataforma</div>
+        </div>
+      </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- ─── CREDENTIALS STRIP ─── -->
   <div class="cred-strip reveal">
