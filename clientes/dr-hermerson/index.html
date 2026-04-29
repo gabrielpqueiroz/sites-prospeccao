@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Hermerson Antonio — Cirurgião-Dentista</title>
+
+    <!-- WhatsApp / Social Preview -->
+    <meta property="og:title" content="Dr. Hermerson Antonio — Cirurgião-Dentista">
+    <meta property="og:description" content="Harmonização Orofacial, Facetas, Lipo de Papada e muito mais. Agende sua consulta com Dr. Hermerson Antonio — CRO-PE 20508.">
+    <meta property="og:image" content="./foto-dr.jpg">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Dr. Hermerson Antonio — Cirurgião-Dentista em Pernambuco. Especialista em Harmonização Orofacial, Facetas em Resina Composta e Lipo de Papada Enzimática. CRO-PE 20508.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════
+           DESIGN TOKENS — Odontologia Premium
+           ═══════════════════════════════════════ */
+        :root {
+            --navy-deep: #0A1628;
+            --navy: #0F2241;
+            --navy-mid: #163260;
+            --navy-light: #1D4280;
+            --gold: #C9A96E;
+            --gold-light: #E0CBA8;
+            --gold-pale: #F5EDD8;
+            --teal: #0EA5A0;
+            --teal-light: #14C8C2;
+            --cream: #FAFAF8;
+            --cream-dark: #F0EDE7;
+            --white: #FFFFFF;
+            --text-dark: #0A1628;
+            --text-body: #374151;
+            --text-muted: #6B7280;
+            --text-on-dark: #CBD5E1;
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            --shadow-sm: 0 1px 3px rgba(10,22,40,0.06), 0 1px 2px rgba(10,22,40,0.04);
+            --shadow-md: 0 4px 20px rgba(10,22,40,0.10), 0 2px 8px rgba(10,22,40,0.05);
+            --shadow-lg: 0 12px 40px rgba(10,22,40,0.14), 0 4px 16px rgba(10,22,40,0.07);
+            --shadow-gold: 0 8px 30px rgba(201,169,110,0.28);
+        }
+
+        /* ═══════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+        /* ═══════════════════════════════════════
+           TYPOGRAPHY
+           ═══════════════════════════════════════ */
+        .heading-xl {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 5.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--white);
+        }
+
+        .heading-lg {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .heading-md {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ═══════════════════════════════════════
+           LAYOUT
+           ═══════════════════════════════════════ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .section {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+        }
+
+        /* ═══════════════════════════════════════
+           REVEAL ANIMATIONS
+           ═══════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem 0;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 22, 40, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.18);
+        }
+
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.01em;
+        }
+
+        .nav-brand-name span { color: var(--gold); }
+
+        .nav-brand-sub {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.8;
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-on-dark);
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s var(--ease-out-expo);
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            color: var(--gold) !important;
+            border: 1px solid rgba(201,169,110,0.4);
+            padding: 0.5rem 1.4rem;
+            border-radius: 2px;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--navy-deep) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* ═══════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--navy-deep);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 40%, rgba(22,50,96,0.6) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 80% at 15% 85%, rgba(14,165,160,0.07) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,169,110,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,169,110,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: center;
+            padding-top: 6rem;
+            padding-bottom: 4rem;
+        }
+
+        .hero-content { max-width: 560px; }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.3s forwards;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-cro {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.6);
+            margin-top: 0.4rem;
+            display: block;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.4s forwards;
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.5s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 1.5vw, 1.12rem);
+            color: var(--text-on-dark);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.7s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.9s forwards;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            opacity: 0;
+            animation: fadeScale 1s var(--ease-out-expo) 0.6s forwards;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            max-height: 600px;
+            background: var(--navy-mid);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 55%, rgba(10,22,40,0.5) 100%);
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            bottom: 12px;
+            left: 12px;
+            border: 1px solid rgba(201,169,110,0.2);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        /* Badge CRO flutuante */
+        .hero-badge {
+            position: absolute;
+            bottom: 2rem;
+            left: -2rem;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.4rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
+            z-index: 3;
+            animation: floatCard 1s var(--ease-out-expo) 1.2s both;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .hero-badge-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #0A1628, #163260);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-badge-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--gold);
+        }
+
+        .hero-badge-text { line-height: 1.3; }
+
+        .hero-badge-title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--navy-deep);
+        }
+
+        .hero-badge-sub {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floatCard {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ═══════════════════════════════════════
+           BUTTONS
+           ═══════════════════════════════════════ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy-deep);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(201,169,110,0.4);
+            color: var(--gold-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            font-size: 0.88rem;
+            padding: 1rem 2.2rem;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20BD5A;
+            box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════
+           TRUST BAR
+           ═══════════════════════════════════════ */
+        .trust-bar {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 2.2rem 0;
+        }
+
+        .trust-bar .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(1.5rem, 4vw, 3.5rem);
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.84rem;
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trust-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gold);
+        }
+
+        .trust-divider {
+            width: 1px;
+            height: 28px;
+            background: var(--cream-dark);
+        }
+
+        /* ═══════════════════════════════════════
+           ABOUT
+           ═══════════════════════════════════════ */
+        .about .container {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: clamp(3rem, 6vw, 6rem);
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: var(--cream-dark);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8%;
+            bottom: 8%;
+            width: 3px;
+            background: linear-gradient(180deg, transparent, var(--gold), transparent);
+            z-index: 2;
+        }
+
+        .about-content .label { margin-bottom: 1rem; }
+
+        .about-content .heading-lg {
+            color: var(--navy-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            color: var(--text-body);
+            margin-bottom: 2rem;
+        }
+
+        .about-text p + p { margin-top: 1rem; }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            background: var(--gold-pale);
+            border: 1px solid rgba(201,169,110,0.2);
+            border-radius: 2px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--navy-deep);
+            letter-spacing: 0.03em;
+        }
+
+        .tag-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════
+           SERVICES
+           ═══════════════════════════════════════ */
+        .services {
+            background: var(--navy-deep);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(201,169,110,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(22,50,96,0.4) 0%, transparent 60%);
+        }
+
+        .services .container { position: relative; z-index: 1; }
+
+        .section-header {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+        }
+
+        .section-header .label { margin-bottom: 1rem; }
+
+        .section-header .heading-lg { color: var(--white); }
+
+        .section-header p {
+            color: var(--text-on-dark);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 4px;
+            padding: clamp(1.5rem, 3vw, 2.2rem);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(201,169,110,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        /* Card de destaque (span 2 colunas) */
+        .service-card--featured {
+            grid-column: span 1;
+            background: rgba(201,169,110,0.07);
+            border-color: rgba(201,169,110,0.15);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(201,169,110,0.15), rgba(201,169,110,0.04));
+            border: 1px solid rgba(201,169,110,0.18);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--gold);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+
+        .service-card p {
+            font-size: 0.88rem;
+            color: var(--text-on-dark);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════
+           CTA BANNER
+           ═══════════════════════════════════════ */
+        .cta-banner {
+            background: var(--white);
+            padding: clamp(3rem, 6vw, 5rem) 0;
+        }
+
+        .cta-inner {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            border-radius: 8px;
+            padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-inner::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+        }
+
+        .cta-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 30%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14,165,160,0.08) 0%, transparent 70%);
+        }
+
+        .cta-text { position: relative; z-index: 1; }
+
+        .cta-text .label { margin-bottom: 0.75rem; }
+
+        .cta-text h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-text p {
+            color: var(--text-on-dark);
+            font-size: 0.95rem;
+        }
+
+        .cta-action {
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .cta-action .btn-whatsapp {
+            font-size: 0.9rem;
+            padding: 1.1rem 2.5rem;
+        }
+
+        .cta-action p {
+            color: var(--text-on-dark);
+            font-size: 0.78rem;
+            margin-top: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* ═══════════════════════════════════════
+           TESTIMONIALS
+           ═══════════════════════════════════════ */
+        .testimonials { background: var(--cream); }
+
+        .testimonials .section-header .heading-lg { color: var(--navy-deep); }
+        .testimonials .section-header p { color: var(--text-body); }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .testimonial-card {
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 4px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg {
+            width: 15px;
+            height: 15px;
+            color: var(--gold);
+            fill: var(--gold);
+        }
+
+        .testimonial-text {
+            font-size: 0.93rem;
+            color: var(--text-body);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-text::before {
+            content: '\201C';
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            color: var(--gold-light);
+            line-height: 0;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-pale), var(--cream-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy-deep);
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.87rem;
+            color: var(--navy-deep);
+        }
+
+        .testimonial-role {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════ */
+        .footer {
+            background: var(--navy-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem 0;
+        }
+
+        .footer .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        .footer-brand span { color: var(--gold); }
+
+        .footer-info {
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        .footer-cro {
+            font-size: 0.7rem;
+            color: rgba(201,169,110,0.5);
+            margin-top: 0.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .footer-social a {
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-on-dark);
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .footer-social svg { width: 14px; height: 14px; }
+
+        /* ═══════════════════════════════════════
+           WHATSAPP FLOAT
+           ═══════════════════════════════════════ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25D366;
+            border-radius: 50px;
+            padding: 0.85rem 1.4rem 0.85rem 1rem;
+            box-shadow: 0 4px 24px rgba(37,211,102,0.45);
+            transition: all 0.3s var(--ease-out-expo);
+            animation: floatPulse 2.5s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(37,211,102,0.55);
+            padding-right: 1.6rem;
+        }
+
+        .whatsapp-float svg {
+            width: 26px;
+            height: 26px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-float-text {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        @keyframes floatPulse {
+            0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.45); }
+            50% { box-shadow: 0 4px 36px rgba(37,211,102,0.65); }
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10,22,40,0.98);
+                backdrop-filter: blur(20px);
+                padding: 2rem clamp(1.5rem, 4vw, 3rem);
+                gap: 1.5rem;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 7rem;
+            }
+
+            .hero-content { max-width: 100%; }
+            .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-label { justify-content: center; }
+            .hero-cro { text-align: center; }
+
+            .hero-image-wrapper { max-width: 380px; margin: 0 auto; }
+            .hero-image-wrapper::before { display: none; }
+            .hero-badge { left: auto; right: -0.5rem; bottom: 1rem; }
+
+            .about .container { grid-template-columns: 1fr; }
+            .about-image { max-height: 380px; }
+
+            .services-grid { grid-template-columns: 1fr 1fr; }
+
+            .testimonials-grid { grid-template-columns: 1fr; }
+
+            .cta-inner { flex-direction: column; text-align: center; }
+            .cta-action { width: 100%; }
+            .cta-action .btn-whatsapp { width: 100%; justify-content: center; }
+        }
+
+        @media (max-width: 600px) {
+            .trust-bar .container { flex-direction: column; gap: 1rem; }
+            .trust-divider { display: none; }
+            .hero-badge { display: none; }
+            .services-grid { grid-template-columns: 1fr; }
+
+            .footer .container { flex-direction: column; text-align: center; }
+
+            .whatsapp-float { padding: 0.85rem; border-radius: 50%; }
+            .whatsapp-float-text { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════ NAVIGATION ════════════ -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <a href="#" class="nav-brand">
+                <span class="nav-brand-name"><span>Dr. Hermerson</span> Antonio</span>
+                <span class="nav-brand-sub">Cirurgião-Dentista · CRO-PE 20508</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="https://wa.me/5571981170636?text=Olá+Dr.+Hermerson!+Gostaria+de+agendar+uma+consulta." target="_blank" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ════════════ HERO ════════════ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label">
+                    <span class="label">Cirurgião-Dentista</span>
+                </div>
+                <span class="hero-cro">CRO-PE 20508</span>
+                <h1 class="heading-xl hero-title">
+                    O sorriso que você merece começa <em>aqui</em>
+                </h1>
+                <p class="hero-subtitle">
+                    Harmonização Orofacial, Facetas em Resina, Lipo de Papada e tratamentos completos
+                    com o cuidado e a precisão que você merece. Agende agora — resposta rápida pelo WhatsApp.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://wa.me/5571981170636?text=Olá+Dr.+Hermerson!+Gostaria+de+agendar+uma+consulta." target="_blank" class="btn btn-whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Agendar pelo WhatsApp
+                    </a>
+                    <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image">
+                    <img src="./foto-dr.jpg" alt="Dr. Hermerson Antonio — Cirurgião-Dentista" loading="eager">
+                </div>
+                <div class="hero-badge">
+                    <div class="hero-badge-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="hero-badge-text">
+                        <div class="hero-badge-title">Registrado CRO-PE</div>
+                        <div class="hero-badge-sub">Nº 20508 — Pernambuco</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════ TRUST BAR ════════════ -->
+    <div class="trust-bar reveal">
+        <div class="container">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <span>Registrado CRO-PE 20508</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                </div>
+                <span>Harmonização Orofacial Especializada</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span>Avaliado 5.0 no Google</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <span>Agendamento pelo WhatsApp</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════ ABOUT ════════════ -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <div class="about-image reveal">
+                <img src="./foto-dr.jpg" alt="Dr. Hermerson Antonio" loading="lazy">
+            </div>
+            <div class="about-content">
+                <span class="label reveal">Sobre o Profissional</span>
+                <h2 class="heading-lg reveal reveal-delay-1">Dr. Hermerson Antonio</h2>
+                <div class="about-text reveal reveal-delay-2">
+                    <p>
+                        Cirurgião-dentista registrado no CRO-PE sob o número 20508, com foco em
+                        oferecer resultados estéticos e funcionais que transformam a autoestima e a saúde bucal
+                        dos seus pacientes.
+                    </p>
+                    <p>
+                        Especializado em Harmonização Orofacial e procedimentos estéticos modernos,
+                        alia técnica apurada a um atendimento humanizado — porque cada sorriso conta
+                        uma história única e merece tratamento personalizado.
+                    </p>
+                </div>
+                <div class="about-tags reveal reveal-delay-3">
+                    <span class="tag"><span class="tag-dot"></span>Clínica Geral</span>
+                    <span class="tag"><span class="tag-dot"></span>Harmonização Orofacial</span>
+                    <span class="tag"><span class="tag-dot"></span>Lipo de Papada</span>
+                    <span class="tag"><span class="tag-dot"></span>Endodontia</span>
+                    <span class="tag"><span class="tag-dot"></span>Facetas em Resina</span>
+                    <span class="tag"><span class="tag-dot"></span>CRO-PE 20508</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════ SERVICES ════════════ -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="label reveal">Serviços</span>
+                <h2 class="heading-lg reveal reveal-delay-1">O que posso fazer por você</h2>
+                <p class="reveal reveal-delay-2">Tratamentos completos para saúde bucal, beleza e bem-estar — com a precisão e o cuidado que você merece.</p>
+            </div>
+            <div class="services-grid">
+
+                <!-- Harmonização Orofacial — destaque -->
+                <div class="service-card service-card--featured reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                    </div>
+                    <h3>Harmonização Orofacial</h3>
+                    <p>Procedimentos estéticos faciais que realçam sua beleza natural — botox, preenchimento e bioestimuladores com resultado natural e seguro.</p>
+                </div>
+
+                <!-- Lipo de Papada -->
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/><path d="M18 2v4h4"/></svg>
+                    </div>
+                    <h3>Lipo de Papada Enzimática</h3>
+                    <p>Redução não cirúrgica da papada com enzimas lipolíticas. Procedimento seguro, com recuperação rápida e resultados visíveis.</p>
+                </div>
+
+                <!-- Facetas -->
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <h3>Facetas em Resina Composta</h3>
+                    <p>Transformação do sorriso em uma sessão. Correção de cor, forma e tamanho com resultado estético natural e de alta qualidade.</p>
+                </div>
+
+                <!-- Endodontia -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3>Endodontia — Tratamento de Canal</h3>
+                    <p>Tratamento especializado para salvar o dente natural, eliminar a dor e preservar sua saúde bucal com máxima segurança e conforto.</p>
+                </div>
+
+                <!-- Clínica Geral -->
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Clínica Geral</h3>
+                    <p>Consultas, limpezas, restaurações e prevenção. Cuidado completo da saúde bucal para toda a família, com diagnóstico preciso.</p>
+                </div>
+
+                <!-- CTA card -->
+                <div class="service-card reveal reveal-delay-2" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background: rgba(201,169,110,0.06); border-color: rgba(201,169,110,0.18);">
+                    <div class="service-icon" style="margin: 0 auto 1.25rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <h3 style="font-size:1.1rem;">Tem dúvidas sobre qual tratamento?</h3>
+                    <p style="margin-bottom:1.2rem; font-size:0.85rem;">Me chame no WhatsApp e te oriento sem compromisso.</p>
+                    <a href="https://wa.me/5571981170636?text=Olá+Dr.+Hermerson!+Tenho+dúvidas+sobre+os+tratamentos." target="_blank" class="btn btn-whatsapp" style="font-size:0.78rem; padding: 0.7rem 1.2rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Falar Agora
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════ CTA BANNER ════════════ -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-inner reveal">
+                <div class="cta-text">
+                    <span class="label">Pronto para começar?</span>
+                    <h2>Agende sua consulta<br>com o Dr. Hermerson</h2>
+                    <p>Atendimento personalizado, resposta rápida e o sorriso que você sempre quis.</p>
+                </div>
+                <div class="cta-action">
+                    <a href="https://wa.me/5571981170636?text=Olá+Dr.+Hermerson!+Gostaria+de+agendar+uma+consulta." target="_blank" class="btn btn-whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Agendar pelo WhatsApp
+                    </a>
+                    <p>Resposta em até 2 horas · Sem compromisso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════ TESTIMONIALS ════════════ -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="label reveal">Depoimentos</span>
+                <h2 class="heading-lg reveal reveal-delay-1">O que os pacientes dizem</h2>
+                <p class="reveal reveal-delay-2">A satisfação de quem já transformou o sorriso com o Dr. Hermerson.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Fiz harmonização orofacial com o Dr. Hermerson e o resultado ficou incrível! Natural, exatamente o que eu queria. Profissional atencioso e muito competente.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">J</div>
+                        <div>
+                            <div class="testimonial-name">Juliana Ferreira</div>
+                            <div class="testimonial-role">Paciente · Harmonização Orofacial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Tinha muito medo do tratamento de canal, mas o Dr. Hermerson foi excelente! Explica tudo, não senti dor e o atendimento foi humanizado do início ao fim.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">C</div>
+                        <div>
+                            <div class="testimonial-name">Carlos Mendes</div>
+                            <div class="testimonial-role">Paciente · Endodontia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Fiz facetas em resina e meu sorriso mudou completamente! Ficou lindo e natural. O Dr. Hermerson é muito talentoso e atencioso. Super recomendo!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div>
+                            <div class="testimonial-name">Patricia Lima</div>
+                            <div class="testimonial-role">Paciente · Facetas em Resina</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand"><span>Dr. Hermerson</span> Antonio</div>
+            <div class="footer-info">
+                <p class="footer-text">&copy; 2026 Dr. Hermerson Antonio. Todos os direitos reservados.</p>
+                <p class="footer-cro">Cirurgião-Dentista · CRO-PE 20508</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/dr.hermerson" target="_blank" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </a>
+                <a href="https://wa.me/5571981170636" target="_blank" aria-label="WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ════════════ WHATSAPP FLOAT ════════════ -->
+    <a href="https://wa.me/5571981170636?text=Olá+Dr.+Hermerson!+Gostaria+de+agendar+uma+consulta." target="_blank" class="whatsapp-float" aria-label="Falar com Dr. Hermerson no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-float-text">Agendar Consulta</span>
+    </a>
+
+    <!-- ════════════ SCRIPTS ════════════ -->
+    <script>
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Navbar scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Mobile menu
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            const spans = navToggle.querySelectorAll('span');
+            if (navLinks.classList.contains('open')) {
+                spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+            } else {
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '';
+                spans[2].style.transform = '';
+            }
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                const spans = navToggle.querySelectorAll('span');
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '';
+                spans[2].style.transform = '';
+            });
+        });
+
+        // Hero parallax
+        const heroImage = document.querySelector('.hero-image');
+        if (heroImage && window.innerWidth > 968) {
+            window.addEventListener('scroll', () => {
+                const scroll = window.scrollY;
+                if (scroll < window.innerHeight) {
+                    heroImage.style.transform = `translateY(${scroll * 0.07}px)`;
+                }
+            }, { passive: true });
+        }
+    </script>
+</body>
+</html>
