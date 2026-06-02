@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shawarma Star — O Melhor Árabe de Foz do Iguaçu · 100% Halal</title>
+
+    <!-- WhatsApp / Social Preview -->
+    <meta property="og:title" content="Shawarma Star — O Melhor Árabe de Foz do Iguaçu">
+    <meta property="og:description" content="Comida árabe sírio-libanesa 100% Halal em Foz do Iguaçu. Shawarmas, kibe frito, falafel e homus. 4,8★ no Google com mais de 760 avaliações. Av. Brasil, 122 — Centro.">
+    <meta property="og:image" content="./shawarma-fritas.jpg">
+    <meta property="og:type" content="restaurant">
+    <meta name="description" content="Shawarma Star — Restaurante árabe sírio-libanês 100% Halal em Foz do Iguaçu. Shawarmas no pão sírio, kibe frito, falafel e homus. Aberto de quinta a terça, 12h às 23h.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        /* ══════════════════════════════════════
+           DESIGN TOKENS — Shawarma Star
+           Espresso + Terracota + Dourado
+           ══════════════════════════════════════ */
+        :root {
+            --ink:         #150E0B;
+            --ink-soft:    #20160F;
+            --espresso:    #2C1D14;
+            --espresso-lt: #3A2719;
+
+            --terra:       #B12027;
+            --terra-deep:  #8E1A1F;
+            --terra-glow:  #D33A40;
+
+            --gold:        #C9A24B;
+            --gold-lt:     #E3C77E;
+            --gold-soft:   #D9BE85;
+            --gold-pale:   #F3E6C4;
+
+            --cream:       #F8F1E2;
+            --cream-dark:  #EFE4CE;
+            --sand:        #E7D6B6;
+            --white:       #FFFFFF;
+
+            --text-light:  #F4ECDC;
+            --text-dim:    #C9B79A;
+            --text-faint:  #9A876C;
+            --text-dark:   #2C1D14;
+            --text-body:   #5A4636;
+            --text-muted:  #8A7560;
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', system-ui, sans-serif;
+            --font-arabic:  'Amiri', 'Cormorant Garamond', serif;
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            --shadow-sm:   0 1px 4px rgba(21,14,11,0.10);
+            --shadow-md:   0 8px 30px rgba(21,14,11,0.16);
+            --shadow-lg:   0 24px 60px rgba(21,14,11,0.28);
+            --shadow-gold: 0 12px 38px rgba(201,162,75,0.32);
+            --shadow-terra:0 12px 38px rgba(177,32,39,0.34);
+        }
+
+        /* ══════════════════════════════════════ RESET & BASE ══════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text-body); background: var(--cream); overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { border: none; background: none; cursor: pointer; font-family: inherit; }
+        ::selection { background: var(--gold); color: var(--ink); }
+
+        /* ══════════════════════════════════════ TYPOGRAPHY ══════════════════════════════════════ */
+        .heading-xl { font-family: var(--font-display); font-size: clamp(3rem, 7.5vw, 6rem); font-weight: 500; line-height: 1.02; letter-spacing: -0.015em; }
+        .heading-lg { font-family: var(--font-display); font-size: clamp(2.2rem, 4.6vw, 3.6rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; }
+        .heading-md { font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 600; line-height: 1.25; }
+        .label { font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+        .arabic { font-family: var(--font-arabic); font-weight: 400; }
+
+        /* ══════════════════════════════════════ LAYOUT ══════════════════════════════════════ */
+        .container { max-width: 1220px; margin: 0 auto; padding: 0 clamp(1.4rem, 4vw, 3rem); }
+        .section { padding: clamp(4.5rem, 9vw, 9rem) 0; }
+
+        .ornament { display: flex; align-items: center; justify-content: center; gap: 0.9rem; color: var(--gold); margin: 0 auto; }
+        .ornament::before, .ornament::after { content: ''; height: 1px; width: clamp(40px, 14vw, 120px); background: linear-gradient(90deg, transparent, var(--gold)); }
+        .ornament::after { background: linear-gradient(90deg, var(--gold), transparent); }
+        .ornament svg { width: 30px; height: 30px; flex-shrink: 0; }
+
+        /* ══════════════════════════════════════ REVEAL ══════════════════════════════════════ */
+        .reveal { opacity: 0; transform: translateY(38px); transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.08s; }
+        .reveal-d2 { transition-delay: 0.18s; }
+        .reveal-d3 { transition-delay: 0.30s; }
+        .reveal-d4 { transition-delay: 0.42s; }
+
+        /* ══════════════════════════════════════ BUTTONS ══════════════════════════════════════ */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; font-family: var(--font-body); font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em; padding: 1.05rem 2.2rem; border-radius: 100px; cursor: pointer; transition: all 0.4s var(--ease-out-expo); white-space: nowrap; }
+        .btn-gold { background: linear-gradient(135deg, var(--gold-lt), var(--gold)); color: var(--ink); box-shadow: var(--shadow-gold); }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 18px 46px rgba(201,162,75,0.45); }
+        .btn-ghost { background: transparent; color: var(--text-light); border: 1px solid rgba(227,199,126,0.4); }
+        .btn-ghost:hover { background: rgba(227,199,126,0.10); border-color: var(--gold); transform: translateY(-3px); }
+        .btn-terra { background: linear-gradient(135deg, var(--terra-glow), var(--terra)); color: #fff; box-shadow: var(--shadow-terra); }
+        .btn-terra:hover { transform: translateY(-3px); box-shadow: 0 18px 46px rgba(177,32,39,0.48); }
+        .btn-wa { background: linear-gradient(135deg, #2ee06a, #1faf50); color: #06231a; box-shadow: 0 12px 38px rgba(37,211,102,0.35); }
+        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 18px 46px rgba(37,211,102,0.5); }
+        .btn svg { width: 18px; height: 18px; }
+
+        /* ══════════════════════════════════════ NAVIGATION ══════════════════════════════════════ */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.3rem 0; transition: all 0.5s var(--ease-out-expo); }
+        .nav.scrolled { background: rgba(21,14,11,0.92); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); padding: 0.7rem 0; box-shadow: 0 2px 30px rgba(0,0,0,0.4); border-bottom: 1px solid rgba(201,162,75,0.18); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 0.8rem; }
+        .brand-logo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 0 0 1.5px rgba(227,199,126,0.5); }
+        .brand-text { display: flex; flex-direction: column; line-height: 1; }
+        .brand-text strong { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-light); letter-spacing: 0.01em; }
+        .brand-text small { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+        .nav-links { display: flex; align-items: center; gap: 2.1rem; }
+        .nav-links a { font-size: 0.86rem; font-weight: 500; color: var(--text-dim); letter-spacing: 0.04em; position: relative; transition: color 0.3s; }
+        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1.5px; background: var(--gold); transition: width 0.35s var(--ease-out-expo); }
+        .nav-links a:hover { color: var(--gold-lt); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta { padding: 0.65rem 1.4rem; font-size: 0.82rem; }
+        .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; z-index: 1100; }
+        .nav-toggle span { width: 26px; height: 2px; background: var(--gold-lt); transition: all 0.35s; }
+
+        .mobile-menu { position: fixed; inset: 0; background: linear-gradient(160deg, var(--ink), var(--espresso)); z-index: 1050; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.6rem; opacity: 0; pointer-events: none; transform: scale(1.04); transition: all 0.5s var(--ease-out-expo); }
+        .mobile-menu.open { opacity: 1; pointer-events: all; transform: scale(1); }
+        .mobile-menu a { font-family: var(--font-display); font-size: 2rem; font-weight: 500; color: var(--text-light); }
+        .mobile-menu a:active { color: var(--gold); }
+
+        /* ══════════════════════════════════════ HERO ══════════════════════════════════════ */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 10%, rgba(177,32,39,0.18), transparent 45%), radial-gradient(circle at 10% 90%, rgba(201,162,75,0.12), transparent 40%), linear-gradient(150deg, var(--ink) 0%, var(--espresso) 55%, var(--ink-soft) 100%); overflow: hidden; padding: 8rem 0 4rem; }
+        .hero-pattern { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23C9A24B' stroke-width='0.6' opacity='0.5'%3E%3Cpath d='M40 0 L52 28 L80 40 L52 52 L40 80 L28 52 L0 40 L28 28 Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E"); background-size: 80px 80px; opacity: 0.10; pointer-events: none; }
+        .hero::after { content: none; }
+        .hero-grid { position: relative; z-index: 4; display: grid; grid-template-columns: 1.05fr 0.95fr; column-gap: clamp(2rem, 5vw, 5rem); align-items: center; width: 100%; grid-template-areas: "title visual" "sub visual" "cta visual" "badges visual"; }
+        .hero-title { grid-area: title; }
+        .hero-sub { grid-area: sub; }
+        .hero-cta { grid-area: cta; }
+        .hero-badges { grid-area: badges; }
+        .hero-visual { grid-area: visual; }
+        .t-mobile { display: none; }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.7rem; margin-bottom: 1.6rem; }
+        .hero-eyebrow .arabic { color: var(--gold-lt); font-size: 1.35rem; }
+        .hero-eyebrow .label { color: var(--gold); }
+        .hero h1 { color: var(--text-light); margin-bottom: 1.4rem; }
+        .hero h1 em { font-style: italic; color: var(--gold-lt); font-weight: 400; }
+        .hero-sub { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--text-dim); max-width: 31rem; margin-bottom: 2.2rem; line-height: 1.75; }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.6rem; }
+        .hero-badges { display: flex; flex-wrap: wrap; gap: 1.6rem 2.4rem; }
+        .hero-badge { display: flex; align-items: center; gap: 0.7rem; }
+        .hero-badge .ic { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; flex-shrink: 0; background: rgba(201,162,75,0.12); border: 1px solid rgba(201,162,75,0.3); color: var(--gold-lt); }
+        .hero-badge .ic svg { width: 20px; height: 20px; }
+        .hero-badge b { display: block; color: var(--text-light); font-size: 0.98rem; font-weight: 600; line-height: 1.2; }
+        .hero-badge span { font-size: 0.76rem; color: var(--text-faint); letter-spacing: 0.04em; }
+
+        .hero-visual { position: relative; }
+        .hero-photo { position: relative; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(201,162,75,0.25); aspect-ratio: 4/5; }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(21,14,11,0.45), transparent 50%); }
+        .hero-float { position: absolute; bottom: -22px; left: -22px; background: var(--cream); border-radius: 14px; padding: 0.85rem 1.2rem; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 0.85rem; z-index: 5; }
+        .hero-float .gmark { width: 30px; height: 30px; flex-shrink: 0; }
+        .hero-float .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 1px; }
+        .hero-float b { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-dark); line-height: 1; }
+        .hero-float small { display: block; font-size: 0.7rem; color: var(--text-muted); }
+        .hero-logo { position: absolute; top: -20px; right: -16px; width: 100px; height: 100px; border-radius: 50%; background: var(--white); padding: 4px; box-shadow: 0 12px 34px rgba(0,0,0,0.4); border: 2px solid var(--gold-lt); z-index: 5; transform: rotate(6deg); }
+        .hero-logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+        /* ══════════════════════════════════════ STRIP ══════════════════════════════════════ */
+        .strip { background: var(--terra-deep); color: var(--gold-pale); overflow: hidden; padding: 0.9rem 0; position: relative; border-top: 1px solid rgba(227,199,126,0.2); border-bottom: 1px solid rgba(227,199,126,0.2); }
+        .strip-track { display: flex; gap: 3rem; white-space: nowrap; animation: scroll 30s linear infinite; width: max-content; }
+        .strip-track span { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; display: inline-flex; align-items: center; gap: 3rem; letter-spacing: 0.02em; }
+        .strip-track span::after { content: '✦'; color: var(--gold); font-size: 0.8rem; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ══════════════════════════════════════ SOBRE ══════════════════════════════════════ */
+        .about { background: var(--cream); position: relative; }
+        .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
+        .about-photos { position: relative; }
+        .about-photos .main { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 3/4; border: 6px solid var(--white); }
+        .about-photos .main img { width: 100%; height: 100%; object-fit: cover; }
+        .about-photos .sub { position: absolute; bottom: -28px; right: -20px; width: 52%; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg); border: 6px solid var(--white); aspect-ratio: 1/1; }
+        .about-photos .sub img { width: 100%; height: 100%; object-fit: cover; }
+        .about-photos .frame-deco { position: absolute; top: -18px; left: -18px; width: 110px; height: 110px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); border-top-left-radius: 18px; opacity: 0.6; }
+        .about h2 { color: var(--text-dark); margin: 1rem 0 1.4rem; }
+        .about p { color: var(--text-body); margin-bottom: 1.2rem; font-size: 1.05rem; }
+        .about p strong { color: var(--terra); font-weight: 600; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 2rem; }
+        .about-feature { display: flex; gap: 0.9rem; align-items: flex-start; }
+        .about-feature .ic { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; background: linear-gradient(135deg, var(--gold-pale), var(--sand)); display: grid; place-items: center; color: var(--terra); }
+        .about-feature .ic svg { width: 22px; height: 22px; }
+        .about-feature b { display: block; color: var(--text-dark); font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+        .about-feature span { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* ══════════════════════════════════════ SECTION HEADERS ══════════════════════════════════════ */
+        .sec-head { text-align: center; max-width: 42rem; margin: 0 auto clamp(2.8rem, 5vw, 4rem); }
+        .sec-head .label { display: block; margin-bottom: 1rem; }
+        .sec-head h2 { color: var(--text-dark); margin-bottom: 1.1rem; }
+        .sec-head.light h2 { color: var(--text-light); }
+        .sec-head p { color: var(--text-muted); font-size: 1.06rem; }
+        .sec-head.light p { color: var(--text-dim); }
+        .sec-head .ornament { margin-bottom: 1.6rem; }
+
+        /* ══════════════════════════════════════ CARDÁPIO (dish cards) ══════════════════════════════════════ */
+        .menu { background: radial-gradient(circle at 85% 0%, rgba(177,32,39,0.16), transparent 40%), linear-gradient(160deg, var(--espresso), var(--ink)); position: relative; overflow: hidden; }
+        .menu .hero-pattern { opacity: 0.06; }
+        .dish-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; position: relative; z-index: 2; }
+        .dish-card { background: linear-gradient(160deg, rgba(58,39,25,0.55), rgba(44,29,20,0.72)); border: 1px solid rgba(201,162,75,0.22); border-radius: 18px; overflow: hidden; transition: all 0.5s var(--ease-out-expo); }
+        .dish-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: var(--shadow-gold); }
+        .dish-photo { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+        .dish-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease-out-expo); }
+        .dish-card:hover .dish-photo img { transform: scale(1.07); }
+        .dish-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(21,14,11,0.55), transparent 55%); }
+        .dish-tag { position: absolute; top: 0.9rem; left: 0.9rem; z-index: 2; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+        .dish-tag.star { background: var(--gold-lt); color: var(--espresso); }
+        .dish-tag.veg { background: #DCEFCF; color: #4F7A2E; }
+        .dish-body { padding: 1.5rem 1.5rem 1.7rem; }
+        .dish-body .ar { font-family: var(--font-arabic); color: var(--gold); font-size: 1rem; display: block; margin-bottom: 0.3rem; }
+        .dish-body h3 { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.5rem; line-height: 1.15; }
+        .dish-body p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
+        .menu-note { text-align: center; margin-top: clamp(2.4rem, 5vw, 3.2rem); position: relative; z-index: 2; }
+        .menu-note p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 1.4rem; }
+        .menu-note p em { color: var(--gold-lt); font-style: italic; }
+
+        /* ══════════════════════════════════════ AVALIAÇÕES GOOGLE ══════════════════════════════════════ */
+        .reviews { background: var(--cream); position: relative; }
+        .gr-summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(1.5rem, 5vw, 4rem); background: var(--white); border: 1px solid var(--cream-dark); border-radius: 20px; padding: clamp(1.8rem, 4vw, 2.6rem) clamp(1.8rem, 5vw, 3.4rem); box-shadow: var(--shadow-md); max-width: 760px; margin: 0 auto clamp(2.6rem, 5vw, 3.4rem); }
+        .gr-score { text-align: center; }
+        .gr-score .big { font-family: var(--font-display); font-size: 4.2rem; font-weight: 700; color: var(--text-dark); line-height: 1; }
+        .gr-stars { color: #FBBC04; font-size: 1.2rem; letter-spacing: 2px; margin: 0.3rem 0; }
+        .gr-score small { display: block; font-size: 0.84rem; color: var(--text-muted); }
+        .gr-divider { width: 1px; align-self: stretch; background: var(--cream-dark); }
+        .gr-google { text-align: center; max-width: 250px; }
+        .gr-google .glogo { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
+        .gr-google .glogo svg { width: 26px; height: 26px; }
+        .gr-google .glogo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-dark); }
+        .gr-google p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .gr-google .btn { padding: 0.7rem 1.4rem; font-size: 0.8rem; }
+
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .rev-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 16px; padding: 1.7rem 1.6rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: all 0.45s var(--ease-out-expo); position: relative; }
+        .rev-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .rev-head { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.9rem; }
+        .rev-avatar { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+        .rev-meta b { display: block; font-size: 0.96rem; color: var(--text-dark); font-weight: 600; line-height: 1.2; }
+        .rev-meta .rev-date { font-size: 0.76rem; color: var(--text-faint); }
+        .rev-gicon { position: absolute; top: 1.4rem; right: 1.4rem; width: 18px; height: 18px; opacity: 0.9; }
+        .rev-stars { color: #FBBC04; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.6rem; }
+        .rev-card p { font-size: 0.92rem; color: var(--text-body); line-height: 1.65; }
+        .rev-card p::before { content: '“'; font-family: var(--font-display); color: var(--gold); }
+        .rev-card p::after { content: '”'; font-family: var(--font-display); color: var(--gold); }
+        .reviews-cta { text-align: center; margin-top: clamp(2.4rem, 5vw, 3.2rem); }
+
+        /* ══════════════════════════════════════ VISITE ══════════════════════════════════════ */
+        .visit { background: var(--cream-dark); }
+        .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: stretch; }
+        .visit-info { display: flex; flex-direction: column; justify-content: center; }
+        .visit-info h2 { color: var(--text-dark); margin: 0.8rem 0 1.6rem; }
+        .visit-rows { display: flex; flex-direction: column; gap: 1.3rem; margin-bottom: 2rem; }
+        .visit-row { display: flex; gap: 1rem; align-items: flex-start; }
+        .visit-row .ic { width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0; background: var(--white); box-shadow: var(--shadow-sm); display: grid; place-items: center; color: var(--terra); }
+        .visit-row .ic svg { width: 22px; height: 22px; }
+        .visit-row b { display: block; color: var(--text-dark); font-size: 1.02rem; font-weight: 600; }
+        .visit-row span { color: var(--text-muted); font-size: 0.92rem; }
+        .visit-row .closed { color: var(--terra); font-weight: 600; }
+        .visit-row a { color: var(--terra); font-weight: 600; }
+        .visit-map { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-md); min-height: 430px; background: var(--white); position: relative; }
+        .visit-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+        .order-note { background: linear-gradient(135deg, var(--espresso), var(--ink)); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1rem; align-items: center; color: var(--text-light); }
+        .order-note .ic { color: var(--gold-lt); flex-shrink: 0; }
+        .order-note .ic svg { width: 30px; height: 30px; }
+        .order-note b { color: var(--gold-lt); font-family: var(--font-display); font-size: 1.2rem; display: block; }
+        .order-note span { font-size: 0.86rem; color: var(--text-dim); }
+
+        /* ══════════════════════════════════════ SOCIAL CTA ══════════════════════════════════════ */
+        .social-cta { background: radial-gradient(circle at 50% 0%, rgba(177,32,39,0.2), transparent 50%), linear-gradient(150deg, var(--ink), var(--espresso)); text-align: center; position: relative; overflow: hidden; }
+        .social-cta .hero-pattern { opacity: 0.07; }
+        .social-cta .container { position: relative; z-index: 2; }
+        .social-cta h2 { color: var(--text-light); margin-bottom: 1rem; }
+        .social-cta p { color: var(--text-dim); max-width: 32rem; margin: 0 auto 2rem; font-size: 1.05rem; }
+        .social-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+        /* ══════════════════════════════════════ FOOTER ══════════════════════════════════════ */
+        .footer { background: var(--ink); color: var(--text-dim); padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer .brand-text strong { color: var(--text-light); }
+        .footer-about { color: var(--text-faint); font-size: 0.92rem; margin-top: 1.3rem; max-width: 26rem; line-height: 1.7; }
+        .footer h4 { color: var(--gold-lt); font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.2rem; font-weight: 600; }
+        .footer-col a, .footer-col p { display: block; color: var(--text-faint); font-size: 0.92rem; margin-bottom: 0.7rem; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--gold-lt); }
+        .footer-bottom { border-top: 1px solid rgba(201,162,75,0.16); padding-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-faint); }
+        .footer-bottom a { color: var(--gold); }
+
+        /* ══════════════════════════════════════ FLOATING WHATSAPP ══════════════════════════════════════ */
+        .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 900; width: 60px; height: 60px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 8px 28px rgba(37,211,102,0.5); transition: all 0.4s var(--ease-out-back); animation: waPulse 2.6s infinite; }
+        .wa-float:hover { transform: scale(1.1); }
+        .wa-float svg { width: 32px; height: 32px; fill: #fff; }
+        @keyframes waPulse { 0% { box-shadow: 0 8px 28px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.45); } 70% { box-shadow: 0 8px 28px rgba(37,211,102,0.5), 0 0 0 18px rgba(37,211,102,0); } 100% { box-shadow: 0 8px 28px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0); } }
+
+        /* ══════════════════════════════════════ RESPONSIVE ══════════════════════════════════════ */
+        @media (max-width: 980px) {
+            .hero { min-height: 100vh; padding: 84px 0 1.6rem; }
+            .hero-grid { display: flex; flex-direction: column; align-items: center; gap: 1.05rem; grid-template-areas: none; }
+            .hero-title { order: 1; text-align: center; font-size: clamp(1.95rem, 6.6vw, 2.7rem); line-height: 1.08; margin-bottom: 0; }
+            .hero-visual { order: 2; width: min(70vw, 290px); max-width: 290px; margin: 0 auto; }
+            .hero-photo { aspect-ratio: 1 / 1; }
+            .hero-logo { top: -22px; left: 50%; right: auto; transform: translateX(-50%) rotate(0); width: 86px; height: 86px; }
+            .hero-float { left: 50%; right: auto; transform: translateX(-50%); bottom: -18px; }
+            .hero-sub { display: none; }
+            .hero-cta { order: 3; width: 100%; max-width: 380px; justify-content: center; gap: 0.7rem; margin: 0.5rem auto 0; flex-wrap: nowrap; }
+            .hero-cta .btn { flex: 1 1 0; min-width: 0; padding: 0.92rem 0.6rem; font-size: 0.82rem; }
+            .hero-badges { display: none; }
+            .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .about-photos { max-width: 420px; }
+            .dish-grid { grid-template-columns: 1fr 1fr; }
+            .reviews-grid { grid-template-columns: 1fr 1fr; }
+            .visit-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .about-features { grid-template-columns: 1fr; }
+            .dish-grid { grid-template-columns: 1fr; }
+            .gr-divider { display: none; }
+            .reviews-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .hero-title { font-size: clamp(1.8rem, 7.4vw, 2.4rem); }
+            .hero-cta .btn { font-size: 0.78rem; padding: 0.88rem 0.45rem; }
+            .hero-logo { width: 76px; height: 76px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════ NAV ══════════ -->
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="#inicio" class="brand">
+                <img src="./logo.png" alt="Logo Shawarma Star" class="brand-logo">
+                <span class="brand-text">
+                    <strong>Shawarma Star</strong>
+                    <small>Árabe · Halal · Foz</small>
+                </span>
+            </a>
+            <div class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#visite">Onde estamos</a>
+                <a href="https://wa.me/554591434343?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Shawarma%20Star%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn btn-gold nav-cta">Pedir no WhatsApp</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#sobre">Sobre</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#visite">Onde estamos</a>
+    </div>
+
+    <!-- ══════════ HERO ══════════ -->
+    <header class="hero" id="inicio">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-grid">
+                    <h1 class="heading-xl hero-title reveal reveal-d1"><span class="t-desktop">O melhor árabe<br>de <em>Foz do Iguaçu</em></span><span class="t-mobile">O melhor shawarma árabe de <em>Foz do Iguaçu</em></span></h1>
+                    <p class="hero-sub reveal reveal-d2">Shawarmas no autêntico pão sírio, kibe frito, falafel e homus — temperos de verdade, do jeito sírio-libanês. Mais de <strong style="color:var(--gold-lt)">760 avaliações</strong> e nota <strong style="color:var(--gold-lt)">4,8★</strong> no Google fazem do Shawarma Star um dos lugares mais queridos da cidade.</p>
+                    <div class="hero-cta reveal reveal-d3">
+                        <a href="https://wa.me/554591434343?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Shawarma%20Star%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn btn-wa">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+                            Fazer um pedido
+                        </a>
+                        <a href="#cardapio" class="btn btn-ghost">Ver o cardápio</a>
+                    </div>
+                    <div class="hero-badges reveal reveal-d4">
+                        <div class="hero-badge">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.7L12 17.3 5.9 20.3l1.5-6.7L2.2 9l6.9-.7z"/></svg></span>
+                            <div><b>4,8 ★</b><span>+760 avaliações no Google</span></div>
+                        </div>
+                        <div class="hero-badge">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                            <div><b>12h às 23h</b><span>Quinta a terça</span></div>
+                        </div>
+                        <div class="hero-badge">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+                            <div><b>100% Halal</b><span>Preparo certificado</span></div>
+                        </div>
+                    </div>
+                <div class="hero-visual reveal reveal-d2">
+                    <div class="hero-logo"><img src="./logo.png" alt="Logo Shawarma Star"></div>
+                    <div class="hero-photo">
+                        <img src="./shawarma-fritas.jpg" alt="Shawarma de carne com batata frita no pão sírio do Shawarma Star">
+                    </div>
+                    <div class="hero-float">
+                        <svg class="gmark" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <small>4,8 · Google</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══════════ STRIP ══════════ -->
+    <div class="strip">
+        <div class="strip-track">
+            <span>Shawarma de Carne</span><span>Shawarma Misto</span><span>Kibe Frito</span><span>Falafel</span><span>Homus</span><span>Pão Sírio</span><span>Espetinhos</span><span>Baklawa</span>
+            <span>Shawarma de Carne</span><span>Shawarma Misto</span><span>Kibe Frito</span><span>Falafel</span><span>Homus</span><span>Pão Sírio</span><span>Espetinhos</span><span>Baklawa</span>
+        </div>
+    </div>
+
+    <!-- ══════════ SOBRE ══════════ -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-photos reveal">
+                    <div class="frame-deco"></div>
+                    <div class="main"><img src="./ambiente.jpg" alt="Ambiente do salão do Shawarma Star"></div>
+                    <div class="sub"><img src="./mezze-prato.jpg" alt="Travessa árabe com shawarma e acompanhamentos"></div>
+                </div>
+                <div class="about-text">
+                    <span class="label reveal">Quem somos</span>
+                    <h2 class="heading-lg reveal reveal-d1">Sabor sírio-libanês no coração de Foz</h2>
+                    <p class="reveal reveal-d2">No <strong>Shawarma Star</strong> cada shawarma carrega a tradição da cozinha do Oriente Médio: carne temperada no ponto certo, pão sírio quentinho, creme de alho cremoso e aquele tempero que só quem é da terra sabe fazer.</p>
+                    <p class="reveal reveal-d2">Aqui é <strong>comida árabe Halal de verdade</strong> — preparada com ingredientes de qualidade e na medida certa do tempero, do jeito que conquistou centenas de clientes e nos tornou referência na Av. Brasil.</p>
+                    <div class="about-features">
+                        <div class="about-feature reveal reveal-d3">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></span>
+                            <div><b>Receita autêntica</b><span>Tempero sírio-libanês de origem.</span></div>
+                        </div>
+                        <div class="about-feature reveal reveal-d3">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                            <div><b>100% Halal</b><span>Todo o preparo segue a certificação.</span></div>
+                        </div>
+                        <div class="about-feature reveal reveal-d4">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.7L12 17.3 5.9 20.3l1.5-6.7L2.2 9l6.9-.7z"/></svg></span>
+                            <div><b>Os melhores de Foz</b><span>4,8★ com +760 avaliações no Google.</span></div>
+                        </div>
+                        <div class="about-feature reveal reveal-d4">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                            <div><b>Bem no Centro</b><span>Av. Brasil, 122 — fácil de chegar.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ CARDÁPIO ══════════ -->
+    <section class="section menu" id="cardapio">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="sec-head light">
+                <div class="ornament reveal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6 6 .5-4.5 4 1.5 6L12 15l-5 3.5 1.5-6L4 8.5 10 8z"/></svg></div>
+                <span class="label reveal reveal-d1">قائمة الطعام · Nosso cardápio</span>
+                <h2 class="heading-lg reveal reveal-d2">Os queridinhos da casa</h2>
+                <p class="reveal reveal-d3">Os pratos mais elogiados nas avaliações do Google — todos 100% Halal.</p>
+            </div>
+            <div class="dish-grid">
+                <div class="dish-card reveal reveal-d1">
+                    <div class="dish-photo"><span class="dish-tag star">Mais pedido</span><img src="./shawarma-fritas.jpg" alt="Shawarma de carne com batata frita"></div>
+                    <div class="dish-body"><span class="ar">شاورما لحم</span><h3>Shawarma de Carne</h3><p>Carne temperada no ponto, pão sírio macio, batata frita e o cremoso creme de alho da casa.</p></div>
+                </div>
+                <div class="dish-card reveal reveal-d2">
+                    <div class="dish-photo"><img src="./shawarma-frango.jpg" alt="Shawarma de frango enrolado"></div>
+                    <div class="dish-body"><span class="ar">شاورما دجاج</span><h3>Shawarma de Frango</h3><p>Frango suculento, salada fresca e molho especial enrolados no pão sírio. Leve e irresistível.</p></div>
+                </div>
+                <div class="dish-card reveal reveal-d3">
+                    <div class="dish-photo"><span class="dish-tag star">Destaque</span><img src="./mezze-prato.jpg" alt="Kibe frito e acompanhamentos árabes"></div>
+                    <div class="dish-body"><span class="ar">كبة مقلية</span><h3>Kibe Frito</h3><p>Crocante por fora, suculento por dentro, servido com limão. Chama a atenção em toda mesa.</p></div>
+                </div>
+                <div class="dish-card reveal reveal-d1">
+                    <div class="dish-photo"><span class="dish-tag veg">Vegetariano</span><img src="./falafel.jpg" alt="Falafel de grão-de-bico"></div>
+                    <div class="dish-body"><span class="ar">فلافل</span><h3>Falafel</h3><p>Bolinhos crocantes de grão-de-bico com ervas e especiarias. Opção vegetariana cheia de sabor.</p></div>
+                </div>
+                <div class="dish-card reveal reveal-d2">
+                    <div class="dish-photo"><span class="dish-tag veg">Vegetariano</span><img src="./homus.jpg" alt="Homus com pão sírio"></div>
+                    <div class="dish-body"><span class="ar">حمص</span><h3>Homus</h3><p>Pasta de grão-de-bico com tahine e azeite, de textura aveludada. Acompanha pão sírio.</p></div>
+                </div>
+                <div class="dish-card reveal reveal-d3">
+                    <div class="dish-photo"><img src="./grelhados.jpg" alt="Espetinhos e grelhados árabes"></div>
+                    <div class="dish-body"><span class="ar">مشاوي</span><h3>Espetinhos & Grelhados</h3><p>Carnes e frango marinados no tempero árabe e grelhados na brasa, com legumes e pão.</p></div>
+                </div>
+            </div>
+            <div class="menu-note reveal">
+                <p>Cardápio completo e valores <em>no balcão</em> ou pelo WhatsApp — fale com a gente para conferir os preços atualizados.</p>
+                <a href="https://wa.me/554591434343?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Shawarma%20Star%20e%20gostaria%20de%20ver%20o%20card%C3%A1pio%20e%20fazer%20um%20pedido." target="_blank" class="btn btn-gold">Pedir pelo WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ AVALIAÇÕES GOOGLE ══════════ -->
+    <section class="section reviews" id="avaliacoes">
+        <div class="container">
+            <div class="sec-head">
+                <div class="ornament reveal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6 6 .5-4.5 4 1.5 6L12 15l-5 3.5 1.5-6L4 8.5 10 8z"/></svg></div>
+                <span class="label reveal reveal-d1">O que dizem no Google</span>
+                <h2 class="heading-lg reveal reveal-d2">Quem prova, recomenda</h2>
+                <p class="reveal reveal-d3">Avaliações reais de clientes no Google. Veja por que somos um dos árabes mais bem avaliados de Foz do Iguaçu.</p>
+            </div>
+
+            <div class="gr-summary reveal">
+                <div class="gr-score">
+                    <div class="big">4,8</div>
+                    <div class="gr-stars">★★★★★</div>
+                    <small>+760 avaliações</small>
+                </div>
+                <div class="gr-divider"></div>
+                <div class="gr-google">
+                    <span class="glogo">
+                        <svg viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                        <span>Google</span>
+                    </span>
+                    <p>Avaliação dos clientes do Shawarma Star no Google.</p>
+                    <a href="https://www.google.com/maps/place/Shawarma+Star+-+Comida+%C3%81rabe+Halal/data=!4m2!3m1!1s0x94f6913d82c3e623:0xf31da1c2e3f01bba" target="_blank" class="btn btn-gold">Ver no Google</a>
+                </div>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="rev-card reveal reveal-d1">
+                    <svg class="rev-gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                    <div class="rev-head"><div class="rev-avatar" style="background:linear-gradient(135deg,#B12027,#8E1A1F)">R</div><div class="rev-meta"><b>Raquel M.</b><span class="rev-date">Avaliação no Google</span></div></div>
+                    <div class="rev-stars">★★★★★</div>
+                    <p>Acho que comi o melhor shawarma da minha vida! Tempero perfeito e atendimento excelente.</p>
+                </div>
+                <div class="rev-card reveal reveal-d2">
+                    <svg class="rev-gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                    <div class="rev-head"><div class="rev-avatar" style="background:linear-gradient(135deg,#3A2719,#2C1D14)">T</div><div class="rev-meta"><b>Tainá G.</b><span class="rev-date">Avaliação no Google</span></div></div>
+                    <div class="rev-stars">★★★★★</div>
+                    <p>Excelente shawarma, tempero diferenciado, um dos melhores que já provei. O kibe também chama atenção.</p>
+                </div>
+                <div class="rev-card reveal reveal-d3">
+                    <svg class="rev-gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                    <div class="rev-head"><div class="rev-avatar" style="background:linear-gradient(135deg,#C9A24B,#9c7728)">A</div><div class="rev-meta"><b>Augusto G. S. R.</b><span class="rev-date">Avaliação no Google</span></div></div>
+                    <div class="rev-stars">★★★★★</div>
+                    <p>O shawarma misto é, simplesmente, sensacional! Voltarei com certeza.</p>
+                </div>
+                <div class="rev-card reveal reveal-d1">
+                    <svg class="rev-gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                    <div class="rev-head"><div class="rev-avatar" style="background:linear-gradient(135deg,#3A2719,#2C1D14)">J</div><div class="rev-meta"><b>Jackie B.</b><span class="rev-date">Avaliação no Google</span></div></div>
+                    <div class="rev-stars">★★★★★</div>
+                    <p>Explosão de sabores! O shawarma de carne é muito saboroso e o homus tem uma textura aveludada.</p>
+                </div>
+                <div class="rev-card reveal reveal-d2">
+                    <svg class="rev-gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                    <div class="rev-head"><div class="rev-avatar" style="background:linear-gradient(135deg,#B12027,#8E1A1F)">L</div><div class="rev-meta"><b>Lilian</b><span class="rev-date">Avaliação no Google</span></div></div>
+                    <div class="rev-stars">★★★★★</div>
+                    <p>Sem igual!! Feito por nativos do Oriente — não há equivalente em lugar nenhum.</p>
+                </div>
+                <div class="rev-card reveal reveal-d3">
+                    <svg class="rev-gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M44 24c0-1.4-.1-2.7-.4-4H24v8h11.3c-.5 2.6-2 4.8-4.3 6.3v5.2h6.9C42 35.9 44 30.4 44 24z"/><path fill="#34A853" d="M24 44c5.4 0 9.9-1.8 13.2-4.9l-6.9-5.2c-1.9 1.3-4.3 2-6.3 2-4.8 0-8.9-3.2-10.4-7.6H6.5v5.4C9.8 39.6 16.3 44 24 44z"/><path fill="#FBBC05" d="M13.6 28.3c-.4-1.3-.6-2.6-.6-4s.2-2.7.6-4v-5.4H6.5C5.1 17.6 4.4 20.7 4.4 24s.7 6.4 2.1 9.1l7.1-4.8z"/><path fill="#EA4335" d="M24 13.4c2.6 0 5 .9 6.9 2.7l5.2-5.2C32.9 7.9 28.4 6 24 6 16.3 6 9.8 10.4 6.5 16.9l7.1 5.4c1.5-4.4 5.6-7.6 10.4-7.6z"/></svg>
+                    <div class="rev-head"><div class="rev-avatar" style="background:linear-gradient(135deg,#C9A24B,#9c7728)">J</div><div class="rev-meta"><b>Jordan L.</b><span class="rev-date">Avaliação no Google</span></div></div>
+                    <div class="rev-stars">★★★★★</div>
+                    <p>O shawarma misto e o kibe frito são excepcionais — principalmente o kibe servido com limão. Nota 10!</p>
+                </div>
+            </div>
+
+            <div class="reviews-cta reveal">
+                <a href="https://www.google.com/maps/place/Shawarma+Star+-+Comida+%C3%81rabe+Halal/data=!4m2!3m1!1s0x94f6913d82c3e623:0xf31da1c2e3f01bba" target="_blank" class="btn btn-terra">Ler todas as avaliações no Google</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ VISITE ══════════ -->
+    <section class="section visit" id="visite">
+        <div class="container">
+            <div class="visit-grid">
+                <div class="visit-info reveal">
+                    <span class="label">Onde estamos</span>
+                    <h2 class="heading-lg">Venha provar pessoalmente</h2>
+                    <div class="visit-rows">
+                        <div class="visit-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                            <div><b>Endereço</b><span>Av. Brasil, 122 — Centro, Foz do Iguaçu/PR · 85853-000</span></div>
+                        </div>
+                        <div class="visit-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                            <div><b>Horário</b><span>Quinta a terça · 12h às 23h<br><span class="closed">Quarta-feira: fechado</span></span></div>
+                        </div>
+                        <div class="visit-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                            <div><b>WhatsApp</b><span><a href="https://wa.me/554591434343?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Shawarma%20Star%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank">(45) 9143-4343</a></span></div>
+                        </div>
+                        <div class="visit-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></span>
+                            <div><b>Instagram</b><span><a href="https://www.instagram.com/shawarma.star/" target="_blank">@shawarma.star</a></span></div>
+                        </div>
+                    </div>
+                    <div class="order-note">
+                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.3A1 1 0 0 0 5.6 19H19M16 19a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM9 19a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></span>
+                        <div><b>Peça pelo WhatsApp</b><span>Faça seu pedido com a gente — é só chamar no (45) 9143-4343.</span></div>
+                    </div>
+                </div>
+                <div class="visit-map reveal reveal-d2">
+                    <iframe src="https://www.google.com/maps?q=Shawarma+Star+Av+Brasil+122+Centro+Foz+do+Iguacu&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização do Shawarma Star"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SOCIAL CTA ══════════ -->
+    <section class="section social-cta">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="ornament reveal" style="margin-bottom:1.4rem"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6 6 .5-4.5 4 1.5 6L12 15l-5 3.5 1.5-6L4 8.5 10 8z"/></svg></div>
+            <h2 class="heading-lg reveal reveal-d1">Bateu a vontade de shawarma?</h2>
+            <p class="reveal reveal-d2">Chame a gente no WhatsApp, acompanhe as novidades no Instagram ou venha nos visitar no Centro.</p>
+            <div class="social-btns reveal reveal-d3">
+                <a href="https://wa.me/554591434343?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Shawarma%20Star%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn btn-wa">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+                    Pedir no WhatsApp
+                </a>
+                <a href="https://www.instagram.com/shawarma.star/" target="_blank" class="btn btn-ghost">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                    @shawarma.star
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="brand">
+                        <img src="./logo.png" alt="Logo Shawarma Star" class="brand-logo">
+                        <span class="brand-text">
+                            <strong>Shawarma Star</strong>
+                            <small>Árabe · Halal · Foz</small>
+                        </span>
+                    </div>
+                    <p class="footer-about">Restaurante árabe sírio-libanês 100% Halal em Foz do Iguaçu. Shawarmas, kibe frito, falafel e homus — o melhor da culinária do Oriente Médio, com nota 4,8★ no Google.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#cardapio">Cardápio</a>
+                    <a href="#avaliacoes">Avaliações</a>
+                    <a href="#visite">Onde estamos</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p>Quinta a terça · 12h às 23h</p>
+                    <p>Quarta-feira: fechado</p>
+                    <p>Av. Brasil, 122 — Centro, Foz do Iguaçu/PR</p>
+                    <a href="https://wa.me/554591434343" target="_blank">WhatsApp: (45) 9143-4343</a>
+                    <a href="https://www.instagram.com/shawarma.star/" target="_blank">@shawarma.star</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Shawarma Star — Comida Árabe Halal. Todos os direitos reservados.</span>
+                <span>Feito com <span style="color:var(--terra-glow)">♥</span> para os amantes da boa comida árabe</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════ WHATSAPP FLOAT ══════════ -->
+    <a href="https://wa.me/554591434343?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Shawarma%20Star%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="wa-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+    </a>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+
+        const toggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        toggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }));
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
+</body>
+</html>
