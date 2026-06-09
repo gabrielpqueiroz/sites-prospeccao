@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabor do Oriente — Cafeteria & Culinária Árabe</title>
+    <link rel="icon" href="./logo.jpg">
+    <link rel="apple-touch-icon" href="./logo.jpg">
 
     <!-- Social Preview -->
     <meta property="og:title" content="Sabor do Oriente — Cafeteria & Culinária Árabe">
@@ -512,6 +514,16 @@
             display: grid; place-items: center; color: var(--gold-lt);
             margin-bottom: 1.3rem; font-size: 1.6rem;
         }
+        .sig-card .sig-img {
+            width: 100%; height: 160px; border-radius: 12px;
+            overflow: hidden; margin-bottom: 1.3rem;
+            border: 1px solid rgba(201,162,75,0.3);
+        }
+        .sig-card .sig-img img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+        .sig-card:hover .sig-img img { transform: scale(1.06); }
         .sig-card h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.5rem; }
         .sig-card .ar { font-family: var(--font-arabic); color: var(--gold); font-size: 1.05rem; display: block; margin-bottom: 0.7rem; }
         .sig-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
@@ -585,6 +597,42 @@
             flex-shrink: 0;
         }
         .mi-price small { font-size: 0.7rem; font-weight: 600; color: var(--text-faint); display: block; text-align: right; }
+
+        /* ===== Cardápio em linhas horizontais (comida e doces) ===== */
+        .menu-list.cards { grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; align-items: stretch; }
+        .menu-list.cards .menu-item {
+            display: flex; flex-direction: row; align-items: stretch; padding: 0; border-bottom: none;
+            background: var(--white);
+            border: 1px solid var(--cream-dark);
+            border-radius: 14px; overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform .35s var(--ease-out-expo), box-shadow .35s;
+        }
+        .menu-list.cards .menu-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .mi-thumb { aspect-ratio: 4 / 3; width: 100%; background: var(--cream-dark); overflow: hidden; }
+        .mi-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .mi-thumb.noimg {
+            display: grid; place-items: center;
+            background:
+              radial-gradient(circle at 30% 25%, rgba(201,162,75,0.18), transparent 60%),
+              linear-gradient(135deg, var(--espresso), var(--ink));
+        }
+        .mi-thumb.noimg svg { width: 38px; height: 38px; color: var(--gold); opacity: .85; }
+        /* miniatura quadrada à esquerda, acompanhando a altura da linha */
+        .menu-list.cards .mi-thumb { width: clamp(92px, 26%, 124px); aspect-ratio: auto; flex-shrink: 0; }
+        .menu-list.cards .mi-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 0.8rem 1rem; }
+        .menu-list.cards .mi-name { font-size: 1.12rem; }
+        .menu-list.cards .mi-desc { margin-top: 0.3rem; }
+        .menu-list.cards .mi-foot { display: flex; align-items: center; flex-shrink: 0; padding: 0 1.1rem 0 0.4rem; }
+        .menu-list.cards .mi-price { font-size: 1.2rem; }
+        /* combo mantém o card vertical, com foto no topo */
+        .combo-card .mi-thumb { margin: -2rem -1.8rem 1.4rem; width: auto; }
+
+        @media (max-width: 720px) { .menu-list.cards { grid-template-columns: 1fr; } }
+        @media (max-width: 420px) {
+            .menu-list.cards .mi-thumb { width: clamp(78px, 30%, 104px); }
+            .menu-list.cards .mi-name { font-size: 1.02rem; }
+        }
         .menu-note {
             text-align: center; margin-top: 2.6rem;
             font-size: 0.85rem; color: var(--text-muted);
@@ -659,6 +707,12 @@
         }
         .booza-pricetag .ar { font-family: var(--font-arabic); color: var(--gold-lt); font-size: 1.05rem; display: block; line-height: 1; }
         .booza-pricetag b { font-family: var(--font-display); color: var(--gold-lt); font-size: 1.9rem; line-height: 1.1; }
+        .booza-flavors { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: clamp(2.4rem, 5vw, 3.4rem); position: relative; z-index: 2; }
+        .booza-flavor { background: rgba(255,255,255,0.04); border: 1px solid rgba(227,199,126,0.22); border-radius: 16px; padding: 1.6rem 1.7rem; }
+        .booza-flavor .ar { font-family: var(--font-arabic); color: var(--gold); font-size: 1.1rem; display: block; margin-bottom: 0.4rem; }
+        .booza-flavor h4 { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold-lt); font-weight: 600; margin-bottom: 0.5rem; }
+        .booza-flavor p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
+        @media (max-width: 720px) { .booza-flavors { grid-template-columns: 1fr; } }
 
         /* ══════════════════════════════════════
            AVALIAÇÕES GOOGLE
@@ -958,25 +1012,25 @@
             </div>
             <div class="sig-grid">
                 <div class="sig-card reveal reveal-d1">
-                    <div class="sig-ic">🥙</div>
+                    <div class="sig-img"><img src="foto-shawarma.jpg" alt="Shawarma de Carne" loading="lazy"></div>
                     <span class="ar">شاورما</span>
                     <h3>Shawarma de Carne</h3>
                     <p>Pão sírio, carne temperada, batata frita e o molho especial de tahine da casa.</p>
                 </div>
                 <div class="sig-card reveal reveal-d2">
-                    <div class="sig-ic">🍽️</div>
+                    <div class="sig-img"><img src="tinified/combo-mediterraneo.jpg" alt="Combo Mediterrâneo" loading="lazy"></div>
                     <span class="ar">مشاوي</span>
                     <h3>Combo Mediterrâneo</h3>
                     <p>Degustação para 2 a 3 pessoas: shawarma, esfihas, sojok, kibes, homus e fattoush.</p>
                 </div>
                 <div class="sig-card reveal reveal-d3">
-                    <div class="sig-ic">🍦</div>
+                    <div class="sig-img"><img src="foto-sorvete.jpg" alt="Sorvete Árabe (Booza)" loading="lazy"></div>
                     <span class="ar">بوظة</span>
                     <h3>Sorvete Árabe</h3>
                     <p>O "Booza" sírio: textura elástica e mastigável, coberto com pistache. Único.</p>
                 </div>
                 <div class="sig-card reveal reveal-d4">
-                    <div class="sig-ic">☕</div>
+                    <div class="sig-img"><img src="tinified/CAFÉ%20ÁRABE%20com%20Cardamomo.jpeg" alt="Café com Cardamomo" loading="lazy"></div>
                     <span class="ar">قهوة</span>
                     <h3>Café com Cardamomo</h3>
                     <p>Café árabe servido individualmente, aromatizado com cardamomo. Tradição pura.</p>
@@ -999,44 +1053,178 @@
                 <button class="menu-tab active" data-tab="shawarmas">Shawarmas</button>
                 <button class="menu-tab" data-tab="burgers">Hambúrgueres</button>
                 <button class="menu-tab" data-tab="sojok">Sojok</button>
+                <button class="menu-tab" data-tab="pratos">Pratos & Porções</button>
                 <button class="menu-tab" data-tab="combos">Combos</button>
                 <button class="menu-tab" data-tab="doces">Doces Árabes</button>
                 <button class="menu-tab" data-tab="cafes">Cafés</button>
                 <button class="menu-tab" data-tab="arabes">Bebidas Árabes</button>
-                <button class="menu-tab" data-tab="geladas">Bebidas Geladas</button>
             </div>
 
             <!-- SHAWARMAS -->
             <div class="menu-panel active" id="tab-shawarmas">
                 <div class="menu-panel-head"><span class="ar">شاورما</span><h3>Shawarmas & Sanduíches</h3><p>No autêntico pão sírio, acompanha creme de alho à parte.</p></div>
-                <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shawarma de Carne</div><div class="mi-desc">Pão sírio, carne, salsinha, cebola, tomate, batata frita, creme de alho e molho especial de tahine.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shawarma de Frango</div><div class="mi-desc">Pão sírio, frango, alface, batata frita, picles e creme de alho.</div></div><div class="mi-price">R$ 20</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shawarma Misto</div><div class="mi-desc">Pão sírio, carne, frango, alface, batata frita, picles e creme de alho.</div></div><div class="mi-price">R$ 20</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shawarma de Kafta</div><div class="mi-desc">Pão sírio, kafta, salsinha, cebola, tomate e molho especial de tahine.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shawarma de Batata Frita <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Pão sírio, batata frita, tomate, alface, picles, ketchup e creme de alho.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shawarma de Falafel <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Pão sírio, bolinhos de falafel, tomate, picles, salsinha e molho de tahine.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Fahita</div><div class="mi-desc">Pão baguete de 30cm, frango, cebola, pimentão, milho verde, queijo e maionese.</div></div><div class="mi-price">R$ 35</div></div>
+                <div class="menu-list cards">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="foto-shawarma.jpg" alt="Shawarma de Carne" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Carne</div><div class="mi-desc">Pão sírio, carne, salsinha, cebola, tomate, batata frita, creme de alho e molho especial de tahine.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shawarma-frango.jpg" alt="Shawarma de Frango" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Frango</div><div class="mi-desc">Pão sírio, frango, alface, batata frita, picles e creme de alho.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 20</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shawarma-misto.jpg" alt="Shawarma Misto" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma Misto</div><div class="mi-desc">Pão sírio, carne, frango, alface, batata frita, picles e creme de alho.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 20</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shawarma-carne.jpg" alt="Shawarma de Kafta" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Kafta</div><div class="mi-desc">Pão sírio, kafta, salsinha, cebola, tomate e molho especial de tahine.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shawarma-batata-frita%20Atualizado.jpg" alt="Shawarma de Batata Frita" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Batata Frita <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Pão sírio, batata frita, tomate, alface, picles, ketchup e creme de alho.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shawarma-falafel.jpg" alt="Shawarma de Falafel" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Falafel <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Pão sírio, bolinhos de falafel, tomate, picles, salsinha e molho de tahine.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
                 </div>
             </div>
 
             <!-- HAMBÚRGUERES -->
             <div class="menu-panel" id="tab-burgers">
                 <div class="menu-panel-head"><span class="ar">برغر</span><h3>Hambúrgueres</h3><p>Carne moída com o tempero especial sírio da casa.</p></div>
-                <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Hambúrguer Sírio</div><div class="mi-desc">Pão de hambúrguer, carne moída com tempero sírio, batata frita, tomate, alface, queijo, maionese e ketchup.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Hambúrguer Sírio no Pão Árabe</div><div class="mi-desc">Pão sírio, carne moída com tempero especial, batata frita, tomate, alface, queijo, maionese e ketchup.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Hambúrguer Árabe com Salada Russa</div><div class="mi-desc">Carne moída com tempero especial, salada russa (repolho, cenoura e maionese), batata frita, picles e queijo.</div></div><div class="mi-price">R$ 30</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Hambúrguer de Falafel <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Hambúrguer de falafel feito de grão de bico, picles, tomate, alface, batata frita e homus.</div></div><div class="mi-price">R$ 35</div></div>
+                <div class="menu-list cards">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/hamburguer-sirio.jpg" alt="Hambúrguer Sírio" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Hambúrguer Sírio</div><div class="mi-desc">Pão de hambúrguer, carne moída com tempero sírio, batata frita, tomate, alface, queijo, maionese e ketchup.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/hamburguer-sirio-pao-arabe.jpg" alt="Hambúrguer Sírio no Pão Árabe" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Hambúrguer Sírio no Pão Árabe</div><div class="mi-desc">Pão sírio, carne moída com tempero especial, batata frita, tomate, alface, queijo, maionese e ketchup.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/hamburguer-salada-russa.jpg" alt="Hambúrguer Árabe com Salada Russa" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Hambúrguer Árabe com Salada Russa</div><div class="mi-desc">Carne moída com tempero especial, salada russa (repolho, cenoura e maionese), batata frita, picles e queijo.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 30</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/hamburguer-falafel.jpg" alt="Hambúrguer de Falafel" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Hambúrguer de Falafel <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Hambúrguer de falafel feito de grão de bico, picles, tomate, alface, batata frita e homus.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 35</div></div>
+                    </div>
                 </div>
             </div>
 
             <!-- SOJOK -->
             <div class="menu-panel" id="tab-sojok">
                 <div class="menu-panel-head"><span class="ar">سجق</span><h3>Sojok</h3><p>Carne moída com alho e tempero especial sírio.</p></div>
-                <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Sojok</div><div class="mi-desc">Pão sírio, carne moída com alho e tempero sírio, fatias finas de tomate e picles.</div></div><div class="mi-price">R$ 25</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Sojok no Pão Baguete</div><div class="mi-desc">Pão baguete de 30cm, carne moída com alho e tempero sírio, fatias finas de tomate e picles.</div></div><div class="mi-price">R$ 30</div></div>
+                <div class="menu-list cards">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/sojok.jpg" alt="Sojok" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Sojok</div><div class="mi-desc">Pão sírio, carne moída com alho e tempero sírio, fatias finas de tomate e picles.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/sojok-baguete.jpg" alt="Sojok no Pão Baguete" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Sojok no Pão Baguete</div><div class="mi-desc">Pão baguete de 30cm, carne moída com alho e tempero sírio, fatias finas de tomate e picles.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 30</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRATOS & PORÇÕES -->
+            <div class="menu-panel" id="tab-pratos">
+                <div class="menu-panel-head"><span class="ar">أطباق ومقبلات</span><h3>Pratos &amp; Porções</h3><p>Porções no prato, mezzes, saladas e salgados árabes. Acompanham pão sírio.</p></div>
+                <div class="menu-list cards">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/homus1.jpeg" alt="Homus" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Homus <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Pasta de grão de bico com azeite de oliva, cominho e páprica doce.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/homus-com-carne.jpg" alt="Homus com Carne" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Homus com Carne</div><div class="mi-desc">Pasta de grão de bico com carne de shawarma, azeite de oliva, cominho e páprica doce.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 40</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/babaganush.jpg" alt="Babaganush" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Babaganush <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Pasta de berinjela com azeite de oliva, cominho e páprica doce.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/homus.jpg" alt="Qualhada Seca" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Qualhada Seca <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Qualhada seca com hortelã seco e azeite de oliva por cima.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 30</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/kibe-cru.jpg" alt="Kibe Cru" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Kibe Cru</div><div class="mi-desc">Servido com pão sírio.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 35</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/falafel-prato.jpg" alt="Falafel no Prato" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Falafel no Prato <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">6 bolinhos de falafel, homus, picles, tomate, alface e molho de tahine.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 50</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shawarma-carne-prato.jpg" alt="Shawarma de Frango no Prato" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Frango no Prato</div><div class="mi-desc">Frango, picles, tomate, alface, batata frita e salada russa. Acompanha pão sírio e creme de alho.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 55</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/fattoush.jpg" alt="Shawarma de Carne no Prato" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shawarma de Carne no Prato</div><div class="mi-desc">Carne de shawarma, picles, tomate, alface, batata frita e salada russa. Acompanha pão sírio e creme de alho.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 60</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/kafta-no-prato.jpg" alt="Kafta no Prato" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Kafta no Prato</div><div class="mi-desc">3 espetos de kafta, homus, tomate e picles. Acompanha pão sírio.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 65</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb noimg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6 6 .5-4.5 4 1.5 6L12 15l-5 3.5 1.5-6L4 8.5 10 8z"/></svg></div>
+                        <div class="mi-body"><div class="mi-name">Tabule <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Salada árabe tradicional.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb noimg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6 6 .5-4.5 4 1.5 6L12 15l-5 3.5 1.5-6L4 8.5 10 8z"/></svg></div>
+                        <div class="mi-body"><div class="mi-name">Fattoush <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Salada árabe com pão sírio tostado.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 25</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/batata-frita.jpg" alt="Porção de Batata Frita" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Porção de Batata Frita <span class="mi-tag veg">Vegetariano</span></div><div class="mi-desc">Porção de 200g.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 20</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/kibe-frito.jpg" alt="Kibe Frito Sírio" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Kibe Frito Sírio</div><div class="mi-desc">Recheado de carne moída com tempero sírio especial e nozes picadas.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 10<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/kibe-frito-tradicional.jpg" alt="Kibe Frito Tradicional" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Kibe Frito Tradicional</div><div class="mi-desc">Recheado de carne moída com tempero sírio especial.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 8<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/esfiha.jpg" alt="Esfiha de Carne" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Esfiha de Carne</div><div class="mi-desc">Feita com massa árabe.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 7<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/esfihaaa.jpg" alt="Esfiha de Queijo" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Esfiha de Queijo</div><div class="mi-desc">Feita com massa árabe.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 7<small>unidade</small></div></div>
+                    </div>
                 </div>
             </div>
 
@@ -1044,27 +1232,76 @@
             <div class="menu-panel" id="tab-combos">
                 <div class="menu-panel-head"><span class="ar">كومبو</span><h3>Combos para Compartilhar</h3><p>O melhor da mesa árabe para dividir com quem você gosta.</p></div>
                 <div class="combos">
-                    <div class="combo-card"><h4>Combo Especial Sírio</h4><div class="combo-serves">Serve até 2 pessoas</div><p>Kibe cru, homus, babaganush, 2 kibes fritos tradicionais, picles, tomate e alface. Acompanha pão sírio.</p><div class="combo-price">R$ 70</div></div>
-                    <div class="combo-card"><h4>Combo Mediterrâneo</h4><div class="combo-serves">Serve 2 a 3 pessoas</div><p>1 shawarma de carne cortado, 2 esfihas de carne, 1 sojok, 2 kibes fritos, homus e salada fattoush. Acompanha creme de alho e pão sírio.</p><div class="combo-price">R$ 120</div></div>
-                    <div class="combo-card"><h4>Combo Vegetariano</h4><div class="combo-serves">Serve até 2 pessoas</div><p>1 shawarma de falafel ao meio, 4 bolinhos de falafel, 1 porção de batata frita e homus. Acompanha creme de alho e pão sírio.</p><div class="combo-price">R$ 70</div></div>
+                    <div class="combo-card"><div class="mi-thumb"><img src="tinified/combo-especial.jpg" alt="Combo Especial Sírio" loading="lazy"></div><h4>Combo Especial Sírio</h4><div class="combo-serves">Serve até 2 pessoas</div><p>Kibe cru, homus, babaganush, 2 kibes fritos tradicionais, picles, tomate e alface. Acompanha pão sírio.</p><div class="combo-price">R$ 70</div></div>
+                    <div class="combo-card"><div class="mi-thumb"><img src="tinified/combo-mediterraneo.jpg" alt="Combo Mediterrâneo" loading="lazy"></div><h4>Combo Mediterrâneo</h4><div class="combo-serves">Serve 2 a 3 pessoas</div><p>1 shawarma de carne cortado, 2 esfihas de carne, 1 sojok, 2 kibes fritos, homus e salada fattoush. Acompanha creme de alho e pão sírio.</p><div class="combo-price">R$ 120</div></div>
+                    <div class="combo-card"><div class="mi-thumb"><img src="tinified/combo-vegetariano.jpeg" alt="Combo Vegetariano" loading="lazy"></div><h4>Combo Vegetariano</h4><div class="combo-serves">Serve até 2 pessoas</div><p>1 shawarma de falafel ao meio, 4 bolinhos de falafel, 1 porção de batata frita e homus. Acompanha creme de alho e pão sírio.</p><div class="combo-price">R$ 70</div></div>
                 </div>
             </div>
 
             <!-- DOCES -->
             <div class="menu-panel" id="tab-doces">
                 <div class="menu-panel-head"><span class="ar">حلويات</span><h3>Doces Árabes</h3><p>Docelaria tradicional do Oriente Médio, feita na casa.</p></div>
-                <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Baklawa</div><div class="mi-desc">Massa filo com castanhas (caju, amêndoa ou nozes) banhada em calda de flor de laranjeira.</div></div><div class="mi-price">R$ 5<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shabiet</div><div class="mi-desc">Pastel de massa folhada doce recheado de nata árabe ou nozes com calda de laranjeira.</div></div><div class="mi-price">R$ 12<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Namura com Pistache</div><div class="mi-desc">Bolo de semolina umedecido em calda de açúcar e água de flor de laranjeira, coberto com pistache.</div></div><div class="mi-price">R$ 9<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Mamoul</div><div class="mi-desc">Biscoito amanteigado recheado de tâmara ou nozes, tradicional no Oriente Médio.</div></div><div class="mi-price">R$ 9<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Halawa</div><div class="mi-desc">Doce turco à base de semente de gergelim torrada e moída com melaço de açúcar.</div></div><div class="mi-price">R$ 10<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Ninho de Passarinho com Pistache</div><div class="mi-desc">Massa fina (cabelo de anjo) moldada em ninho, recheada com pistache.</div></div><div class="mi-price">R$ 9<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Manjar Turco com Pistache</div><div class="mi-desc">Goma turca, doce tradicional de raízes persas, com pistache.</div></div><div class="mi-price">R$ 12<small>unidade</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Halawet El Jibn</div><div class="mi-desc">Massa de queijo macia enrolada com recheio cremoso de nata árabe e essência de rosas, pistache por cima. Acompanha calda de rosas.</div></div><div class="mi-price">R$ 25<small>4 unidades</small></div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Porção de Tâmaras com Nozes</div><div class="mi-desc">5 tâmaras recheadas com nozes.</div></div><div class="mi-price">R$ 10</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Bandeja de Doce Árabe</div><div class="mi-desc">Seleção variada de doces árabes para compartilhar.</div></div><div class="mi-price">R$ 35</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Paleta Mexicana</div><div class="mi-desc">Picolé cremoso artesanal.</div></div><div class="mi-price">R$ 15</div></div>
+                <div class="menu-list cards">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/baklawa.jpeg" alt="Baklawa" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Baklawa</div><div class="mi-desc">Massa filo com castanhas (caju, amêndoa ou nozes) banhada em calda de flor de laranjeira.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 5<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/shabiet.jpg" alt="Shabiet" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shabiet</div><div class="mi-desc">Pastel de massa folhada doce recheado de nata árabe ou nozes com calda de laranjeira.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 12<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/namura.jpg" alt="Namura com Pistache" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Namura com Pistache</div><div class="mi-desc">Bolo de semolina umedecido em calda de açúcar e água de flor de laranjeira, coberto com pistache.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 9<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/mamoul.jpg" alt="Mamoul" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Mamoul</div><div class="mi-desc">Biscoito amanteigado recheado de tâmara ou nozes, tradicional no Oriente Médio.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 9<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/halawa.jpeg" alt="Halawa" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Halawa</div><div class="mi-desc">Doce turco à base de semente de gergelim torrada e moída com melaço de açúcar.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 10<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/ninho.jpg" alt="Ninho de Passarinho com Pistache" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Ninho de Passarinho com Pistache</div><div class="mi-desc">Massa fina (cabelo de anjo) moldada em ninho, recheada com pistache.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 9<small>unidade</small></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/osmaliyeh.jpg" alt="Osmaliyeh" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Osmaliyeh</div><div class="mi-desc">Massa de knafa (cabelo de anjo) recheada com pistache, finalizada com calda de flor de laranjeira.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 15</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/flores-oriente.jpg" alt="Flores do Oriente" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Flores do Oriente <span class="mi-tag star">Importado</span></div><div class="mi-desc">Biscoito turco de chocolate com pistache importado, recheado de tâmaras com essência de flores e um toque de canela.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 12</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/flores-dubai.jpg" alt="Flores de Dubai" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Flores de Dubai <span class="mi-tag star">Importado</span></div><div class="mi-desc">Biscoito Dubai de pistache com pistache importado, recheado de tâmaras com essência de flores e um toque de canela.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 12</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/tamaras-nozes.jpg" alt="Porção de Tâmaras com Nozes" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Porção de Tâmaras com Nozes</div><div class="mi-desc">5 tâmaras recheadas com nozes.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 10</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/bandeja-baklawa.jpg" alt="Bandeja de Doce Árabe" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Bandeja de Doce Árabe</div><div class="mi-desc">Seleção variada de doces árabes para compartilhar.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 35</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/paleta-mexicana.jpg" alt="Paleta Mexicana" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Paleta Mexicana</div><div class="mi-desc">Picolé cremoso artesanal.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 15</div></div>
+                    </div>
                 </div>
                 <p class="menu-note">Procurando algo especial? Temos também o <strong>Sorvete Árabe (Booza)</strong> — veja abaixo.</p>
             </div>
@@ -1072,14 +1309,18 @@
             <!-- CAFÉS -->
             <div class="menu-panel" id="tab-cafes">
                 <div class="menu-panel-head"><span class="ar">قهوة</span><h3>Cafés & Cappuccinos</h3><p>Da cafeteria: do expresso ao café árabe com cardamomo.</p></div>
+                <div class="menu-list cards" style="grid-template-columns: 1fr;">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/CAFÉ%20ÁRABE%20com%20Cardamomo.jpeg" alt="Café Árabe com Cardamomo" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Café Árabe com Cardamomo <span class="mi-tag star">Especial</span></div><div class="mi-desc">Servido individualmente, aromatizado com cardamomo.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 12</div></div>
+                    </div>
+                </div>
                 <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Café Árabe com Cardamomo <span class="mi-tag star">Especial</span></div><div class="mi-desc">Servido individualmente, aromatizado com cardamomo.</div></div><div class="mi-price">R$ 12</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Café Expresso Curto</div></div><div class="mi-price">R$ 6</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Café Expresso Longo</div></div><div class="mi-price">R$ 10</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Café Expresso com Leite</div></div><div class="mi-price">R$ 10</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Café Expresso Pingado</div></div><div class="mi-price">R$ 10</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Chocolate com Leite</div></div><div class="mi-price">R$ 10</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Chocolate</div></div><div class="mi-price">R$ 10</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Cappuccino Tradicional</div></div><div class="mi-price">R$ 12</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Cappuccino de Avelã</div></div><div class="mi-price">R$ 12</div></div>
                     <div class="menu-item"><div class="mi-body"><div class="mi-name">Cappuccino de Canela</div></div><div class="mi-price">R$ 12</div></div>
@@ -1091,30 +1332,27 @@
             <!-- BEBIDAS ÁRABES -->
             <div class="menu-panel" id="tab-arabes">
                 <div class="menu-panel-head"><span class="ar">مشروبات عربية</span><h3>Bebidas Árabes</h3><p>Sabores tradicionais do Oriente Médio.</p></div>
-                <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Suco de Tamarindo à Modo Árabe <span class="mi-tag star">330ml</span></div><div class="mi-desc">Com maravilhosa essência árabe de água de rosas.</div></div><div class="mi-price">R$ 15</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Shrub al Lawz <span class="mi-tag star">330ml</span></div><div class="mi-desc">"Bebida de amêndoa" — refrescante, popular no Oriente Médio.</div></div><div class="mi-price">R$ 18</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Sahlab <span class="mi-tag star">210ml</span></div><div class="mi-desc">Bebida quente e cremosa, textura aveludada, água de rosas e pistache por cima.</div></div><div class="mi-price">R$ 18</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Chá Preto Árabe no Bule</div><div class="mi-desc">Serve duas pessoas.</div></div><div class="mi-price">R$ 15</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Chá Preto Árabe Individual</div><div class="mi-desc">Servido na xícara.</div></div><div class="mi-price">R$ 8</div></div>
-                </div>
-            </div>
-
-            <!-- BEBIDAS GELADAS -->
-            <div class="menu-panel" id="tab-geladas">
-                <div class="menu-panel-head"><span class="ar">مشروبات باردة</span><h3>Bebidas Geladas</h3><p>Sucos naturais, refrigerantes e energéticos.</p></div>
-                <div class="menu-list">
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Suco Natural <span class="mi-tag star">330ml</span></div><div class="mi-desc">Maracujá, abacaxi com hortelã ou tamarindo.</div></div><div class="mi-price">R$ 10</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Suco de Laranja Natural <span class="mi-tag star">330ml</span></div></div><div class="mi-price">R$ 12</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Refrigerante <span class="mi-tag star">600ml</span></div><div class="mi-desc">Coca-Cola, Coca-Cola Zero.</div></div><div class="mi-price">R$ 10</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Refrigerante <span class="mi-tag star">350ml</span></div><div class="mi-desc">Coca, Sprite, Kuat, Fanta, Citros, Tônica.</div></div><div class="mi-price">R$ 7</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Refrigerante <span class="mi-tag star">220ml</span></div><div class="mi-desc">Coca-Cola, Coca-Cola Zero.</div></div><div class="mi-price">R$ 5</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Sprite Lemon Fresh <span class="mi-tag star">510ml</span></div></div><div class="mi-price">R$ 8</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Chá Mate Gelado com Gás <span class="mi-tag star">290ml</span></div></div><div class="mi-price">R$ 8</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Suco Del Valle <span class="mi-tag star">350ml</span></div><div class="mi-desc">Uva, pêssego ou goiaba.</div></div><div class="mi-price">R$ 8</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Powerade</div></div><div class="mi-price">R$ 9</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Monster Energy <span class="mi-tag star">510ml</span></div></div><div class="mi-price">R$ 14</div></div>
-                    <div class="menu-item"><div class="mi-body"><div class="mi-name">Água (com ou sem gás)</div></div><div class="mi-price">R$ 4</div></div>
+                <div class="menu-list cards">
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/tamarindo%20a%20modo%20arabe.jpeg" alt="Suco de Tamarindo à Modo Árabe" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Suco de Tamarindo à Modo Árabe <span class="mi-tag star">330ml</span></div><div class="mi-desc">Com maravilhosa essência árabe de água de rosas.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 15</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/SHRUB%20al%20LAWZ.jpeg" alt="Shrub al Lawz" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Shrub al Lawz <span class="mi-tag star">330ml</span></div><div class="mi-desc">"Bebida de amêndoa" — refrescante, popular no Oriente Médio.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 18</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/CHÁ%20PRETO%20ÁRABE%20NO%20BULE.jpeg" alt="Chá Preto Árabe no Bule" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Chá Preto Árabe no Bule</div><div class="mi-desc">Serve duas pessoas.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 15</div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="mi-thumb"><img src="tinified/cha-preto-arabe.jpeg" alt="Chá Preto Árabe Individual" loading="lazy"></div>
+                        <div class="mi-body"><div class="mi-name">Chá Preto Árabe Individual</div><div class="mi-desc">Servido na xícara.</div></div>
+                        <div class="mi-foot"><div class="mi-price">R$ 8</div></div>
+                    </div>
                 </div>
             </div>
 
@@ -1141,6 +1379,18 @@
                 <div class="booza-photo reveal reveal-d2">
                     <img src="./foto-sorvete.jpg" alt="Sorvete árabe (booza) com pistache servido no Sabor do Oriente">
                     <div class="booza-pricetag"><span class="ar">بوظة</span><b>R$ 25</b></div>
+                </div>
+            </div>
+            <div class="booza-flavors">
+                <div class="booza-flavor reveal">
+                    <span class="ar">بوظة</span>
+                    <h4>Sorvete Turco Shrub al Louz</h4>
+                    <p>O irresistível efeito "puxa-puxa" do Sahlep, extraído de uma orquídea silvestre que é encontrada somente na Turquia, em uma versão inspirada na tradicional bebida árabe de amêndoas. Textura firme, cremosa e com o sabor nobre das castanhas.</p>
+                </div>
+                <div class="booza-flavor reveal reveal-d2">
+                    <span class="ar">وردة الصحراء</span>
+                    <h4>Rosas do Deserto</h4>
+                    <p>O legítimo sorvete turco com sua famosa textura elástica ("puxa-puxa") garantida pelo Sahlep, extraído de uma orquídea silvestre que é encontrada somente na Turquia. Uma combinação exótica, perfumada e refrescante com essência de rosas.</p>
                 </div>
             </div>
         </div>
